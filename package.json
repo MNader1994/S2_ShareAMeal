@@ -1,0 +1,20 @@
+{
+  "name": "s2_shareameal",
+  "version": "1.0.0",
+  "description": "nodejs server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MNader1994/S2_ShareAMeal.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MNader1994/S2_ShareAMeal/issues"
+  },
+  "homepage": "https://github.com/MNader1994/S2_ShareAMeal#readme"
+}
