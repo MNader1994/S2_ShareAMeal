@@ -50,4 +50,4 @@ jobs:
               with:
                   heroku_api_key: ${{secrets.HEROKU_API_KEY}}
                   heroku_app_name: servershareameal
-                  heroku_email: ${{secrets.HEROKU_USER_EMAIL}}
+                  heroku_email: mn.birakdar@student.avans.nl
