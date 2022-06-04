@@ -4,6 +4,7 @@ const app = express();
 const port = process.env.PORT || 3000
 
 const bodyParser = require("body-parser");
+const { use } = require('express/lib/application');
 app.use(bodyParser.json());
 
 
@@ -50,6 +51,11 @@ app.get("/api/user", (req, res) => {
   });
 }) // UC-202 get all users 
 
+app.get('/api/user/profile', (request, response) => {
+  response.send(database[0]);
+  console.log(database[0]);
+}); // UC-203 get personal user profile
+
 
 app.get("/api/user/:userId", (req, res) => {
   const userId = req.params.userId;
@@ -69,6 +75,33 @@ app.get("/api/user/:userId", (req, res) => {
     });
   }
 }); // UC-204 get a specific user using their Id
+
+
+app.put("/api/user/:userId", (req, res) => {
+  const userId = req.params.userId;
+  database = database.map( u=> {
+    if (u.id == userId)
+    {
+          const user = req.body;
+
+          return {...u,...user}
+    }
+    return u
+  })
+  res.status(200).json({
+          massage:"User updated"
+        })
+}); // UC-205 update an user using their Id
+
+
+app.delete("/api/user/:userId", (req, res) => {
+    const userId = req.params.userId;
+    database = database.filter(u => u.id != userId);
+
+        res.status(200).json({
+        message:"user deleted"
+    });
+}); // UC-206 delete an user using their Id
 
 
 app.all("*", (req,res) => {
