@@ -76,7 +76,7 @@ app.all("*", (req,res) => {
     status:401,
     result: "End-point not found",
   });
-});
+}); // error massage as response if there is any invalid request  
 
 
 app.listen(port, () => {
