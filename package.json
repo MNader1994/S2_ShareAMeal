@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "test"
   },
   "repository": {
@@ -16,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/MNader1994/S2_ShareAMeal/issues"
   },
-  "homepage": "https://github.com/MNader1994/S2_ShareAMeal#readme"
+  "homepage": "https://github.com/MNader1994/S2_ShareAMeal#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
 }

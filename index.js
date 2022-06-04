@@ -1,5 +1,4 @@
 const http = require('http')
-const { resourceUsage } = require('process')
 
 const port = process.env.PORT || 3000
 const result = {
