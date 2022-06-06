@@ -34,6 +34,8 @@ app.use((err,req,res,next) =>{
   res.status(err.status).json(err);
 }) // error handler
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Server running at ${port}`)
 })
+
+module.exports = server;
