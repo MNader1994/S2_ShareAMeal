@@ -1,7 +1,32 @@
+const assert = require("assert");
+const { title } = require("process");
 let database = [];
 let id =0;
 
 let controller = {
+    validateUser: (req,res,next)=> {
+        let user = req.body;
+        let { firstName, lastName, street, city, password, emailAdress, phoneNumber } = user;
+        
+        try {
+            assert(typeof firstName == 'string', "firstname must be string");
+            assert(typeof lastName == 'string', "lastname must be string");
+            assert(typeof street == 'string', "street must be string");
+            assert(typeof city == 'string', "city must be string");
+            assert(typeof password == 'string', "password must be string");
+            assert(typeof emailAdress == 'email', "emailAdress must be correct");
+            assert(typeof phoneNumber == 'number', "phonenumber must be numeric");
+            next();
+        }
+        catch (err) {
+            console.log(err);
+            res.status(400).json({
+                status: 400,
+                result: `${err.toString()}`,
+            });
+        }
+
+    },
     addUser: (req,res)=>{
         let user = req.body;
         id++;

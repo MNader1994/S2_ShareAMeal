@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
   
   
   
-  router.post("/api/user",userController.addUser); // UC-201 register a new user 
+  router.post("/api/user", userController.validateUser ,userController.addUser); // UC-201 register a new user 
   
   router.get("/api/user", userController.getAllUsers) // UC-202 get all users 
   
