@@ -30,6 +30,9 @@ app.all("*", (req,res) => {
   });
 }); // error massage as response if there is any invalid request  
 
+app.use((err,req,res,next) =>{
+  res.status(err.status).json(err);
+}) // error handler
 
 app.listen(port, () => {
   console.log(`Server running at ${port}`)

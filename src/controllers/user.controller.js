@@ -14,16 +14,16 @@ let controller = {
             assert(typeof street == 'string', "street must be string");
             assert(typeof city == 'string', "city must be string");
             assert(typeof password == 'string', "password must be string");
-            assert(typeof emailAdress == 'email', "emailAdress must be correct");
+            assert(typeof emailAdress == 'string', "emailAdress must be correct");
             assert(typeof phoneNumber == 'number', "phonenumber must be numeric");
             next();
         }
         catch (err) {
-            console.log(err);
-            res.status(400).json({
-                status: 400,
-                result: `${err.toString()}`,
-            });
+            const error ={
+                status:400,
+                result: err.message,
+            }
+            next(error);
         }
 
     },
@@ -52,8 +52,9 @@ let controller = {
         response.send(database[0]);
         console.log(database[0]);
     },
-    getUserById:(req,res)=>{
+    getUserById:(req,res,next)=>{
         const userId = req.params.userId;
+       
         console.log(`User met Id ${userId} gezocht`);
         let user = database.filter((item) => item.id == userId);
         if (user.length > 0) {
@@ -64,10 +65,11 @@ let controller = {
         });
         }
         else {
-        res.status(401).json({
-            status: 401,
-            result: `User with ID ${userId} not found`,
-        });
+            const error = {
+                status: 401,
+                result: `User with ID ${userId} not found`,
+            }
+            next(error);
         }
     },
     updateAnUserById: (req,res)=>{
